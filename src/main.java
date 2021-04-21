@@ -5,7 +5,7 @@ import java.util.regex.*;
 
 public class main {
     public static void main(String[] args) {
-
+        int count =  1;
         System.out.printf("\nConteúdo do arquivo texto:\n");
         try {
             FileReader arquivo = new FileReader("src/teste.txt");
@@ -13,9 +13,9 @@ public class main {
 
             String linha = lerArquivo.readLine();
             while (linha != null) {
-//                System.out.printf("%s\n", linha);
-                verificaIf(linha);
-                linha = lerArquivo.readLine(); // lê da segunda até a última linha
+                MetodosDeVerificacao.verificaDeclaracaoDeVariavel(linha, count);
+                linha = lerArquivo.readLine();
+                count++;
             }
 
             arquivo.close();
@@ -26,21 +26,8 @@ public class main {
         System.out.println();
     }
 
-    public static void verificaIf(String string) {
-        System.out.println(string);
 
-        Boolean matchFound = string.matches("if[(] []? [)]");
-
-        if (matchFound) {
-            System.out.println("Match found.");
-            System.out.println();
-        } else {
-            System.out.println("Match not found.");
-            System.out.println();
-        }
-    }
 
 }
 
-https://www.vogella.com/tutorials/JavaRegularExpressions/article.html
-
+//https://www.vogella.com/tutorials/JavaRegularExpressions/article.html
