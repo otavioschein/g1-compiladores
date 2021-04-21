@@ -1,0 +1,25 @@
+Programa Fonte
+Otávio e Joel
+
+public static int calcularSoma(int valorA, int valorB) {
+        int valorC = valorA + valorB;
+        return valorC;
+}
+int resultado = calcularSoma(1, 2);
+
+if (resultado > 0) {
+    System.out.println("Valor maior que 0");
+} else if(resultado > 5) {
+    System.out.println("Valor maior que 5");
+} else if(resultado > 10) {
+    System.out.println("Valor maior que 10");
+}
+
+for(int i = 1; i < resultado; i++) {
+    if( (resultado % 2) == 0) {
+        System.out.println("Número par");
+    } else {
+        System.out.println("Número ímpar");
+    }
+}
+
