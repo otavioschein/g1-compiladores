@@ -1,7 +1,7 @@
 Programa Fonte
 Otávio Schein e Joel Moraes
 
-public static int calcularSoma(  int valorB) {
+public static int calcularSoma(valorA  int valorB) {
         int valorC = valorA + valorB;
         return valorC;
 }

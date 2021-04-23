@@ -1,3 +1,4 @@
-int secret;
-final int secret;
-final String var;
+public static int (int valorA, String b) {
+private static String (int valorA, String b) {
+public long (int valorA, String b) {
+protected int (String valorA, String b) {
