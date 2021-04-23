@@ -1,5 +1,33 @@
 public class MetodosDeVerificacao {
 
+    public static void menuChamaMetodos(String string, int count) {
+        verificaLinhaIgnorada(string, count);
+        verificaComentario(string, count);
+        verificaPrint(string, count);
+        verificaDeclaracaoDeVariavel(string, count);
+        verificaAtribuicaoDeValorVariavel(string, count);
+        verificaDeclaracaoDeMetodo(string, count);
+        verificaRetornoDeValor(string, count);
+        verificaFechamentoDeBloco(string, count);
+        verificaCondicao(string, count);
+        verificaRepeticao(string, count);
+    }
+
+    public static void verificaLinhaIgnorada(String string, int count) {
+        Boolean matchFound = string.matches("\\s*");
+        if(matchFound) {
+            System.out.printf("Linha %d: Linha ignorada.\n", count);
+        }
+    }
+
+    public static void verificaComentario(String string, int count) {
+        Boolean matchFound =  string.matches(".*//.*");
+        if(matchFound) {
+            System.out.printf("Linha %d: Comentário de código.\n", count);
+        }
+
+    }
+
     public static void verificaPrint(String string, int count) {
         Boolean matchFound = string.matches(
                 "\\s*(System.out.println)*(System.out.print)*(System.out.printf)*[ (].*[)];"
@@ -11,9 +39,17 @@ public class MetodosDeVerificacao {
 
     public static void verificaDeclaracaoDeVariavel(String string, int count) {
         String tipoVariavel = retornaTipoVariavel(string);
-        Boolean matchFound = string.matches("\\s*(final)?\\s*" + tipoVariavel + ".*;");
+        String visibilidade = retornaTipoVisibilidade(string);
+        Boolean matchFound = string.matches("\\s*("+visibilidade+")?\\s*(final)?\\s*" + tipoVariavel + ".*;");
         if (matchFound) {
             System.out.printf("Linha %d: Declaração de variável do tipo %s.\n", count, tipoVariavel);
+        }
+    }
+
+    public static void verificaAtribuicaoDeValorVariavel(String string, int count) {
+        Boolean matchFound = string.matches(".*=.*;");
+        if(matchFound) {
+            System.out.printf("Linha %d: Atribuição de valor para variável.\n", count);
         }
     }
 
@@ -21,19 +57,39 @@ public class MetodosDeVerificacao {
         String visibilidade = retornaTipoVisibilidade(string);
         String tipoDeRetornoMetodo = retornaTipoRetornoDoMetodo(string);
         Boolean matchFound = string.matches(
-                "\\s*" + visibilidade + "\\s*(static)?\\s*" + tipoDeRetornoMetodo + ".*[(].*[)]\\s*[{]"
+                "\\s*" + visibilidade + "\\s*(static)?\\s*" + tipoDeRetornoMetodo + ".*[(].*[) ][ {]"
                 );
         if (matchFound) {
             System.out.printf("Linha %d: Declaração de método %s que retorna um %s.\n", count, visibilidade, tipoDeRetornoMetodo);
-        } else {
-            System.out.println("Match not found.");
         }
     }
 
-    public static void verificaIf(String string, int count) {
-        Boolean matchFound = string.matches("if[ (].*[) ][ {]");
+    public static void verificaRetornoDeValor(String string, int count) {
+        Boolean matchFound = string.matches("\\s*return\\s*.*");
+        if(matchFound) {
+            System.out.printf("Linha %d: Comando de retorno de valor.\n", count);
+        }
+    }
+
+    public static void verificaFechamentoDeBloco(String string, int count) {
+        Boolean matchFound = string.matches("\\s*[}]\\s*");
+        if (matchFound) {
+            System.out.printf("Linha %d: Fechamento de bloco de código.\n", count);
+        }
+    }
+
+    public static void verificaCondicao(String string, int count) {
+        Boolean matchFound = string.matches("\\s*if[ (].*[) ][ {]");
         if (matchFound) {
             System.out.printf("Linha %d: Estrutura de controle condicional.\n", count);
+        }
+    }
+
+    public static void verificaRepeticao(String string, int count) {
+        if(string.matches("\\s*for[ (].*[) ][ {]")) {
+            System.out.printf("Linha %d: Estrutura de repetição for.\n", count);
+        } else if(string.matches("\\s*while[ (].*[) ][ {]")) {
+            System.out.printf("Linha %d: Estrutura de repetição while.\n", count);
         }
     }
 

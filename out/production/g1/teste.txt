@@ -1,4 +1,26 @@
-public static int (int valorA, String b) {
-private static String (int valorA, String b) {
-public long (int valorA, String b) {
-protected int (String valorA, String b) {
+
+public static int metodo (int valorA, String b) {
+    String variavel;
+}
+
+private static String metodo(int valorA, String b) {
+    final int = 10;
+}
+
+public long metodo (int valorA, String b) {
+    private final int = 10;
+}
+
+//
+//protected int metodo(String valorA, String b) {
+    System.out.println("ok");
+    if (matchFound) {
+       System.out.println("ok");
+    }
+}
+
+for (int x = 0; x < 100; i++) {
+    while(true){
+        
+    }
+}

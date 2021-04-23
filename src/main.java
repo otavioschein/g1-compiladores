@@ -13,7 +13,7 @@ public class main {
 
             String linha = lerArquivo.readLine();
             while (linha != null) {
-                MetodosDeVerificacao.verificaDeclaracaoDeMetodo(linha, count);
+                MetodosDeVerificacao.menuChamaMetodos(linha, count);
                 linha = lerArquivo.readLine();
                 count++;
             }
