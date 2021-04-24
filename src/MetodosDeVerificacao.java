@@ -7,6 +7,7 @@ public class MetodosDeVerificacao {
         verificaDeclaracaoDeVariavel(string, count);
         verificaAtribuicaoDeValorVariavel(string, count);
         verificaDeclaracaoDeMetodo(string, count);
+        verificaChamadaDeMetodo(string, count);
         verificaRetornoDeValor(string, count);
         verificaFechamentoDeBloco(string, count);
         verificaCondicao(string, count);
@@ -47,7 +48,9 @@ public class MetodosDeVerificacao {
     }
 
     public static void verificaAtribuicaoDeValorVariavel(String string, int count) {
-        Boolean matchFound = string.matches(".*=.*;");
+        String tipoVariavel = retornaTipoVariavel(string);
+        String visibilidade = retornaTipoVisibilidade(string);
+        Boolean matchFound = string.matches("\\s*("+visibilidade+")?\\s*(final)?\\s*" + tipoVariavel + ".*=.*;");
         if(matchFound) {
             System.out.printf("Linha %d: Atribuição de valor para variável.\n", count);
         }
@@ -90,6 +93,13 @@ public class MetodosDeVerificacao {
             System.out.printf("Linha %d: Estrutura de repetição for.\n", count);
         } else if(string.matches("\\s*while[ (].*[) ][ {]")) {
             System.out.printf("Linha %d: Estrutura de repetição while.\n", count);
+        }
+    }
+
+    public static void verificaChamadaDeMetodo(String string, int count) {
+        Boolean matchFound = string.matches("\\s*.*[(].*[)];");
+        if(matchFound) {
+            System.out.printf("Linha %d: Chamada de método.\n", count);
         }
     }
 

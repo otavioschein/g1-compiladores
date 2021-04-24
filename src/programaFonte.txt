@@ -1,5 +1,5 @@
-Programa Fonte
-Otávio Schein e Joel Moraes
+//Programa Fonte
+//Otávio Schein e Joel Moraes
 
 public static int calcularSoma(valorA  int valorB) {
         int valorC = valorA + valorB;

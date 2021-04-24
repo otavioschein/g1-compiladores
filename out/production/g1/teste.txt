@@ -8,15 +8,16 @@ private static String metodo(int valorA, String b) {
 }
 
 public long metodo (int valorA, String b) {
-    private final int = 10;
+//    private final int = 10;
 }
 
 //
-//protected int metodo(String valorA, String b) {
+protected int metodo(String valorA, String b) {
     System.out.println("ok");
     if (matchFound) {
        System.out.println("ok");
     }
+    return 5;
 }
 
 for (int x = 0; x < 100; i++) {
@@ -24,3 +25,5 @@ for (int x = 0; x < 100; i++) {
         
     }
 }
+metodo(5,6);
+int media = metodo(5, 6);
