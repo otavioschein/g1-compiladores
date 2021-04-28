@@ -1,25 +1,24 @@
 //Programa Fonte
 //Otávio Schein e Joel Moraes
 
-public static int calcularSoma(valorA  int valorB) {
+public static int calcularSoma(int valorA,  int valorB) {
         int valorC = valorA + valorB;
         return valorC;
 }
 int resultado = calcularSoma(1, 2);
 
-if (resultado > 0) {
-    System.out.println("Valor maior que 0");
-} else if(resultado > 5) {
-    System.out.println("Valor maior que 5");
-} else if(resultado > 10) {
-    System.out.println("Valor maior que 10");
+if (resultado > 2 || resultado == 1) {
+    System.out.println("Valor maior que 2 ou igual a 1!");
+} else if(resultado != 5) {
+    System.out.println("Valor diferente de 5");
+} else if(resultado > 10 && resultado < 20)  {
+    System.out.println("Valor maior que 10 e menor que 20");
 }
 
 for(int i = 1; i < resultado; i++) {
-    if( (resultado % 2) == 0) {
+    if( !(resultado % 2) == 0) {
         System.out.println("Número par");
     } else {
         System.out.println("Número ímpar");
     }
 }
-

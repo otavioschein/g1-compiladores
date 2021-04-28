@@ -1,14 +1,13 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.regex.*;
 
 public class main {
     public static void main(String[] args) {
         int count =  1;
         System.out.printf("\nConteúdo do arquivo texto:\n");
         try {
-            FileReader arquivo = new FileReader("src/teste.txt");
+            FileReader arquivo = new FileReader("src/programaFonte.txt");
             BufferedReader lerArquivo = new BufferedReader(arquivo);
 
             String linha = lerArquivo.readLine();
@@ -25,9 +24,4 @@ public class main {
         }
         System.out.println();
     }
-
-
-
 }
-
-//https://www.vogella.com/tutorials/JavaRegularExpressions/article.html

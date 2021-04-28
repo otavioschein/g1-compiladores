@@ -7,11 +7,13 @@ public class MetodosDeVerificacao {
         verificaDeclaracaoDeVariavel(string, count);
         verificaAtribuicaoDeValorVariavel(string, count);
         verificaDeclaracaoDeMetodo(string, count);
-        verificaChamadaDeMetodo(string, count);
         verificaRetornoDeValor(string, count);
         verificaFechamentoDeBloco(string, count);
         verificaCondicao(string, count);
         verificaRepeticao(string, count);
+        verificaOperacaoMatematica(string, count);
+        verificaOperacaoLogica(string, count);
+        verificaChamadaDeMetodo(string, count);
     }
 
     public static void verificaLinhaIgnorada(String string, int count) {
@@ -22,7 +24,7 @@ public class MetodosDeVerificacao {
     }
 
     public static void verificaComentario(String string, int count) {
-        Boolean matchFound =  string.matches(".*//.*");
+        Boolean matchFound =  string.matches("//.*");
         if(matchFound) {
             System.out.printf("Linha %d: Comentário de código.\n", count);
         }
@@ -61,7 +63,7 @@ public class MetodosDeVerificacao {
         String tipoDeRetornoMetodo = retornaTipoRetornoDoMetodo(string);
         Boolean matchFound = string.matches(
                 "\\s*" + visibilidade + "\\s*(static)?\\s*" + tipoDeRetornoMetodo + ".*[(].*[) ][ {]"
-                );
+        );
         if (matchFound) {
             System.out.printf("Linha %d: Declaração de método %s que retorna um %s.\n", count, visibilidade, tipoDeRetornoMetodo);
         }
@@ -83,7 +85,9 @@ public class MetodosDeVerificacao {
 
     public static void verificaCondicao(String string, int count) {
         Boolean matchFound = string.matches("\\s*if[ (].*[) ][ {]");
-        if (matchFound) {
+        Boolean matchFoundElse = string.matches("\\s*[} ]?\\s*else\\s*[ {]");
+        Boolean matchFoundElseIf = string.matches("\\s*[} ]?\\s*else if[ (].*[) ][ {]");
+        if (matchFound || matchFoundElse || matchFoundElseIf) {
             System.out.printf("Linha %d: Estrutura de controle condicional.\n", count);
         }
     }
@@ -93,6 +97,25 @@ public class MetodosDeVerificacao {
             System.out.printf("Linha %d: Estrutura de repetição for.\n", count);
         } else if(string.matches("\\s*while[ (].*[) ][ {]")) {
             System.out.printf("Linha %d: Estrutura de repetição while.\n", count);
+        }
+    }
+
+    public static void verificaOperacaoMatematica(String string, int count) {
+        Boolean matchFound = string.matches("\\s*.*[+><%*-].*");
+        Boolean matchFoundDivide = string.matches("\\s+.+/.+");
+
+        if(matchFound || matchFoundDivide) {
+            System.out.printf("Linha %d: Operação Matemática.\n", count);
+        }
+    }
+
+    public static void verificaOperacaoLogica(String string, int count) {
+        Boolean matchFoundNot = string.matches("\\s*.*![=(].*[) ].*");
+        Boolean matchFoundAnd = string.matches("\\s*.*&{2}.*");
+        Boolean matchFoundOr = string.matches("\\s*.*[|]{2}.*");
+
+        if (matchFoundOr || matchFoundAnd || matchFoundNot){
+            System.out.printf("Linha %d: Operação Lógica.\n", count);
         }
     }
 
